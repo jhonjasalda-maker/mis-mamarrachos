@@ -4,6 +4,13 @@
   const modal = document.getElementById('art-modal');
   const iconModal = document.getElementById('icon-modal');
   const iconButton = document.querySelector('.brand-mark-button');
+  const iconFallback = document.getElementById('icon-fallback');
+  if (iconFallback) {
+    const iconData = iconFallback.src;
+    document.querySelectorAll('.brand-mark, .statement-image, .icon-modal img').forEach(image => { image.src = iconData; });
+    const favicon = document.querySelector('link[rel="icon"]');
+    if (favicon) favicon.href = iconData;
+  }
   const modalImage = document.getElementById('modal-image');
   const modalTitle = document.getElementById('modal-title');
   const modalMessage = document.getElementById('modal-message');
