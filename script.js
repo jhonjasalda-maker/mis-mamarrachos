@@ -2,6 +2,8 @@
   'use strict';
 
   const modal = document.getElementById('art-modal');
+  const iconModal = document.getElementById('icon-modal');
+  const iconButton = document.querySelector('.brand-mark-button');
   const modalImage = document.getElementById('modal-image');
   const modalTitle = document.getElementById('modal-title');
   const modalMessage = document.getElementById('modal-message');
@@ -132,11 +134,14 @@
   document.querySelectorAll('.quick-view').forEach(button => button.addEventListener('click', event => { event.stopPropagation(); openArtwork(button.dataset.title, button); }));
   document.querySelectorAll('.image-wrap').forEach(wrap => wrap.addEventListener('click', () => openArtwork(wrap.closest('.art-card').dataset.title, wrap.querySelector('.quick-view'))));
   document.querySelector('.modal-close').addEventListener('click', closeModal); galleryPrev.addEventListener('click', () => moveGallery(-1)); galleryNext.addEventListener('click', () => moveGallery(1));
+  iconButton.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); iconModal.showModal(); });
+  iconModal.querySelector('.icon-modal-close').addEventListener('click', () => iconModal.close());
   processToggle.addEventListener('click', () => { if (!activeProcessImages.length) return; const expanded = processToggle.getAttribute('aria-expanded') === 'true'; processToggle.setAttribute('aria-expanded', String(!expanded)); processGallery.hidden = expanded; processToggle.innerHTML = expanded ? 'Ver el proceso de mi mamarracho <span aria-hidden="true">↗</span>' : 'Ocultar proceso <span aria-hidden="true">↑</span>'; if (!expanded) { activeGallery = [activeGallery[0], ...activeProcessImages]; activeGalleryIndex = 1; renderGallery(); } else { activeGallery = [activeGallery[0]]; activeGalleryIndex = 0; renderGallery(); } });
-  document.addEventListener('keydown', event => { if (!modal.open) return; if (event.key === 'ArrowLeft') moveGallery(-1); if (event.key === 'ArrowRight') moveGallery(1); if (event.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', event => { if (iconModal.open && event.key === 'Escape') iconModal.close(); if (!modal.open) return; if (event.key === 'ArrowLeft') moveGallery(-1); if (event.key === 'ArrowRight') moveGallery(1); if (event.key === 'Escape') closeModal(); });
   document.querySelectorAll('[data-filter-reset]').forEach(button => button.addEventListener('click', () => applyFilter('all')));
   menuToggle.addEventListener('click', () => { const open = menuToggle.getAttribute('aria-expanded') === 'true'; menuToggle.setAttribute('aria-expanded', String(!open)); menuToggle.querySelector('.sr-only').textContent = open ? 'Abrir menú' : 'Cerrar menú'; navigation.classList.toggle('is-open', !open); });
   navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menuToggle.setAttribute('aria-expanded', 'false'); navigation.classList.remove('is-open'); }));
   document.querySelectorAll('img').forEach(image => image.addEventListener('error', () => { image.classList.add('image-error'); image.alt = image.alt || 'Imagen no disponible'; }, { once: true }));
   updateWhatsappLinks();
 })();
+
