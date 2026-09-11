@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 460" role="img" aria-labelledby="title desc">
+  <title id="title">Musa buscando inspiración</title>
+  <desc id="desc">Ilustración caricaturesca de una musa con una bombilla apagada y una lupa.</desc>
+  <rect width="600" height="460" rx="28" fill="#f4f0e8"/>
+  <path d="M95 350c70-42 148-48 214-18 71 32 141 29 204-10" fill="none" stroke="#202020" stroke-width="8" stroke-linecap="round"/>
+  <path d="M156 144c-19-52 25-105 81-105 40 0 75 27 84 64 7 29-3 57-24 75-24 20-35 37-35 63h-91c0-28-4-50-15-73z" fill="#d6ef43" stroke="#202020" stroke-width="8"/>
+  <path d="M183 236h79M190 257h64" stroke="#202020" stroke-width="8" stroke-linecap="round"/>
+  <path d="M218 305c12 20 39 26 56 6" fill="none" stroke="#202020" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="204" cy="148" r="8" fill="#202020"/><circle cx="267" cy="148" r="8" fill="#202020"/>
+  <path d="M205 185c17-13 39-13 57 0" fill="none" stroke="#202020" stroke-width="7" stroke-linecap="round"/>
+  <path d="M394 232c21-24 59-27 83-6 25 23 20 62-4 83-24 31-56 44-88 36-25-7-34-37-19-56z" fill="#f06f70" stroke="#202020" stroke-width="8"/>
+  <circle cx="426" cy="277" r="27" fill="none" stroke="#202020" stroke-width="8"/><path d="m447 299 25 25" stroke="#202020" stroke-width="8" stroke-linecap="round"/>
+  <path d="M383 117c16-22 41-34 67-34" fill="none" stroke="#202020" stroke-width="8" stroke-linecap="round"/>
+  <text x="315" y="69" font-family="monospace" font-size="24" fill="#202020">¿dónde estás, musa?</text>
+  <path d="M130 93 111 73M311 108l22-19M111 204l-27 8" stroke="#202020" stroke-width="7" stroke-linecap="round"/>
+</svg>
+
