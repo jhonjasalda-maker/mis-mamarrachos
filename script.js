@@ -20,7 +20,9 @@
   const galleryPrev = document.getElementById('gallery-prev');
   const galleryNext = document.getElementById('gallery-next');
   const galleryCount = document.getElementById('gallery-count');
-  const cards = [...document.querySelectorAll('.art-card')];
+  const cards = [...document.querySelectorAll('#coleccion .art-card')];
+  const workingCards = [...document.querySelectorAll('#trabajando .work-card')];
+  const workingEmpty = document.getElementById('working-empty');
   const unclassifiedCard = cards.find(card => card.dataset.title === 'The Dream team');
   if (unclassifiedCard) unclassifiedCard.dataset.tags = '';
   const filters = [...document.querySelectorAll('.filter')];
@@ -44,7 +46,8 @@
     'Callado se ve mas bonito':'Hay silencios que no esconden nada: guardan una belleza que solo aparece cuando dejamos de explicar.',
     'Come de mi':'Una invitación a acercarse sin miedo y descubrir que hasta lo extraño puede alimentar el asombro.',
     'Mi otro yo':'Ese reflejo que nos acompaña en secreto: la parte de nosotros que también merece ser escuchada.',
-    'The Dream team':'Cuando los sueños se encuentran, hasta las diferencias pueden convertirse en fuerza y compañía.'
+    'The Dream team':'Cuando los sueños se encuentran, hasta las diferencias pueden convertirse en fuerza y compañía.',
+    'Ven y camina conmigo':'Una invitación a avanzar sin prisa: cada paso, cada trazo y cada duda pueden convertirse en parte del camino hacia una nueva imagen.'
   };
   const sources = Object.fromEntries(cards.map(card => [card.dataset.title, card.querySelector('img').getAttribute('src')]));
   const processByTitle = {
@@ -77,6 +80,15 @@
     ['Una locura lunar/WhatsApp Image 2026-09-04 at 9.03.44 AM (8).jpeg','09 · Últimos detalles'],
     ['Una locura lunar/WhatsApp Image 2026-09-04 at 9.03.44 AM (9).jpeg','10 · La obra casi termina'],
     ['Una locura lunar/WhatsApp Image 2026-09-04 at 9.03.44 AM (10).jpeg','11 · La obra terminada']
+  ];
+  processByTitle['Ven y camina conmigo'] = [
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.43 AM.jpeg','01 · El primer trazo'],
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.43 AM (1).jpeg','02 · La idea comienza a caminar'],
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM.jpeg','03 · Aparecen las primeras formas'],
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (1).jpeg','04 · El camino toma dirección'],
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (2).jpeg','05 · El color empieza a hablar'],
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (3).jpeg','06 · La historia sigue abierta'],
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (4).jpeg','07 · Todavía está naciendo']
   ];
   document.querySelectorAll('img').forEach(image => {
     if (image.getAttribute('src') === 'fotos dream team/IMG_20221213_152457914.jpg') image.src = 'fotos dream team/IMG_20221213_152642224.jpg';
@@ -137,6 +149,7 @@
     let visible = 0; cards.forEach(card => { const show = filter === 'all' || card.dataset.tags.split(' ').includes(filter); card.hidden = !show; if (show) visible += 1; });
     empty.hidden = visible !== 0; status.textContent = `Mostrando ${visible} ${visible === 1 ? 'obra' : 'obras'}`;
   }
+  if (workingEmpty) workingEmpty.hidden = workingCards.length > 0;
   filters.forEach(button => { const filter = button.dataset.filter; const count = filter === 'all' ? cards.length : cards.filter(card => card.dataset.tags.split(' ').includes(filter)).length; button.querySelector('span').textContent = String(count).padStart(2, '0'); button.addEventListener('click', () => applyFilter(filter)); });
   document.querySelectorAll('.quick-view').forEach(button => button.addEventListener('click', event => { event.stopPropagation(); openArtwork(button.dataset.title, button); }));
   document.querySelectorAll('.image-wrap').forEach(wrap => wrap.addEventListener('click', () => openArtwork(wrap.closest('.art-card').dataset.title, wrap.querySelector('.quick-view'))));
