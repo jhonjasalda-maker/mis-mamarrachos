@@ -139,7 +139,7 @@
   function openArtwork(title, trigger) {
     lastTrigger = trigger; const card = trigger.closest('.art-card'); const image = card.querySelector('img');
     activeGallery = [{ src: image.currentSrc || image.src, alt: title }]; activeGalleryIndex = 0;
-    modalTitle.textContent = title; modalMessage.textContent = messages[title] || 'Una obra original para encontrar un significado propio.'; modalMeta.textContent = 'Réplica impresa bajo pedido · Desde $25.000 COP';
+    modalTitle.textContent = title; modalMessage.textContent = messages[title] || 'Una obra original para encontrar un significado propio.'; modalMeta.textContent = 'Réplica impresa bajo pedido · Desde $55.000 COP · Envío se suma aparte según ciudad o país de destino';
     renderProcess(title); updateWhatsappLinks(title); renderGallery();
     if (typeof modal.showModal === 'function') modal.showModal(); else modal.setAttribute('open', '');
     requestAnimationFrame(() => modalClose?.focus());
