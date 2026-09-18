@@ -20,6 +20,7 @@
   const galleryPrev = document.getElementById('gallery-prev');
   const galleryNext = document.getElementById('gallery-next');
   const galleryCount = document.getElementById('gallery-count');
+  const modalClose = document.querySelector('#art-modal .modal-close');
   const cards = [...document.querySelectorAll('#coleccion .art-card')];
   const workingCards = [...document.querySelectorAll('#trabajando .work-card')];
   const workingEmpty = document.getElementById('working-empty');
@@ -141,9 +142,13 @@
     modalTitle.textContent = title; modalMessage.textContent = messages[title] || 'Una obra original para encontrar un significado propio.'; modalMeta.textContent = 'Réplica impresa bajo pedido · Desde $25.000 COP';
     renderProcess(title); updateWhatsappLinks(title); renderGallery();
     if (typeof modal.showModal === 'function') modal.showModal(); else modal.setAttribute('open', '');
-    requestAnimationFrame(() => document.querySelector('.modal-close').focus());
+    requestAnimationFrame(() => modalClose?.focus());
   }
-  function closeModal() { modal.close(); if (lastTrigger) lastTrigger.focus(); }
+  function closeModal() {
+    if (modal.open && typeof modal.close === 'function') modal.close();
+    else modal.removeAttribute('open');
+    if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+  }
   function applyFilter(filter) {
     filters.forEach(button => { const active = button.dataset.filter === filter; button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active)); });
     let visible = 0; cards.forEach(card => { const show = filter === 'all' || card.dataset.tags.split(' ').includes(filter); card.hidden = !show; if (show) visible += 1; });
@@ -153,7 +158,10 @@
   filters.forEach(button => { const filter = button.dataset.filter; const count = filter === 'all' ? cards.length : cards.filter(card => card.dataset.tags.split(' ').includes(filter)).length; button.querySelector('span').textContent = String(count).padStart(2, '0'); button.addEventListener('click', () => applyFilter(filter)); });
   document.querySelectorAll('.quick-view').forEach(button => button.addEventListener('click', event => { event.stopPropagation(); openArtwork(button.dataset.title, button); }));
   document.querySelectorAll('.image-wrap').forEach(wrap => wrap.addEventListener('click', () => openArtwork(wrap.closest('.art-card').dataset.title, wrap.querySelector('.quick-view'))));
-  document.querySelector('.modal-close').addEventListener('click', closeModal); galleryPrev.addEventListener('click', () => moveGallery(-1)); galleryNext.addEventListener('click', () => moveGallery(1));
+  modalClose?.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); closeModal(); });
+  modal.addEventListener('cancel', event => { event.preventDefault(); closeModal(); });
+  modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+  galleryPrev.addEventListener('click', () => moveGallery(-1)); galleryNext.addEventListener('click', () => moveGallery(1));
   iconButton.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); iconModal.showModal(); });
   iconModal.querySelector('.icon-modal-close').addEventListener('click', () => iconModal.close());
   processToggle.addEventListener('click', () => { if (!activeProcessImages.length) return; const expanded = processToggle.getAttribute('aria-expanded') === 'true'; processToggle.setAttribute('aria-expanded', String(!expanded)); processGallery.hidden = expanded; processToggle.innerHTML = expanded ? 'Ver el proceso de mi mamarracho <span aria-hidden="true">↗</span>' : 'Ocultar proceso <span aria-hidden="true">↑</span>'; if (!expanded) { activeGallery = [activeGallery[0], ...activeProcessImages]; activeGalleryIndex = 1; renderGallery(); } else { activeGallery = [activeGallery[0]]; activeGalleryIndex = 0; renderGallery(); } });
@@ -164,4 +172,3 @@
   document.querySelectorAll('img').forEach(image => image.addEventListener('error', () => { image.classList.add('image-error'); image.alt = image.alt || 'Imagen no disponible'; }, { once: true }));
   updateWhatsappLinks();
 })();
-
