@@ -16,13 +16,39 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="theme-overrides.css" />
+  <style>
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: inherit;
+  text-decoration: none;
+}
+.instagram-icon {
+  width: 21px;
+  height: 21px;
+  display: block;
+}
+.instagram-link:hover {
+  opacity: .65;
+}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="brand"><button class="brand-mark-button" type="button" aria-label="Ampliar icono de Mis Mamarrachos"><img class="brand-mark" src="icono-mis-mamarrachos.jpeg" alt="" /></button><a class="brand-text" href="#inicio" aria-label="Mis Mamarrachos, inicio"><strong>Mis Mamarrachos</strong><small>Dibujos para mirar el mundo de otra manera.</small></a></div>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation"><span class="sr-only">Abrir menú</span><span aria-hidden="true">☰</span></button>
-<nav id="site-navigation" aria-label="Navegación principal"><a href="#coleccion">Colección</a><a href="#historia">La mirada</a><a href="#trabajando">Trabajando ando</a><a href="#precios">Precios</a><a class="nav-cta" href="#contacto">Encargar una réplica <span aria-hidden="true">↗</span></a></nav>
+<nav id="site-navigation" aria-label="Navegación principal"><a href="#coleccion">Colección</a><a href="#historia">La mirada</a><a href="#trabajando">Trabajando ando</a><a href="#precios">Precios</a><a class="instagram-link" href="https://www.instagram.com/jhonjasalda.art/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Jhon Jairo Saldarriaga" title="Instagram">
+<svg class="instagram-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+  <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+  <circle cx="17.4" cy="6.7" r="1.1" fill="currentColor"/>
+</svg>
+<span class="sr-only">Instagram</span>
+</a><a class="nav-cta" href="#contacto">Encargar una réplica <span aria-hidden="true">↗</span></a></nav>
   </header>
 
   <main id="contenido">
