@@ -90,8 +90,9 @@
     ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (2).jpeg','05 · El color empieza a hablar'],
     ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (3).jpeg','06 · La historia sigue abierta'],
     ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (4).jpeg','07 · Todavía está naciendo'],
-	['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.35 PM.jpeg','07 · La inspiración es una princesa'],
-	['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.36 PM (2).jpeg','07 · Esta hitoria va andando de la mano']	
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.35 PM.jpeg','08 · La inspiración es una princesa'],
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.36 PM (2).jpeg','09 · Esta historia va andando de la mano'],
+    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-10-01 at 4.33.22 PM.jpeg','10 · La obra terminada']
   ];
   document.querySelectorAll('img').forEach(image => {
     if (image.getAttribute('src') === 'fotos dream team/IMG_20221213_152457914.jpg') image.src = 'fotos dream team/IMG_20221213_152642224.jpg';

@@ -1,0 +1,9 @@
+*.zip
+*.pptx
+*.ndjson
+dashboard_build/
+ppt_build/
+slide_build/
+BACKLOG_MAESTRO_MIS_MAMARRACHOS.md
+modelo-canvas-venta-de-mis-obras.svg
+modelo-canvas-venta-de-mis-obras-v2.svg
