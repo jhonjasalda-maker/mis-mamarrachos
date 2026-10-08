@@ -48,7 +48,8 @@
     'Come de mi':'Una invitación a acercarse sin miedo y descubrir que hasta lo extraño puede alimentar el asombro.',
     'Mi otro yo':'Ese reflejo que nos acompaña en secreto: la parte de nosotros que también merece ser escuchada.',
     'The Dream team':'Cuando los sueños se encuentran, hasta las diferencias pueden convertirse en fuerza y compañía.',
-    'Ven y camina conmigo':'Una invitación a avanzar sin prisa: cada paso, cada trazo y cada duda pueden convertirse en parte del camino hacia una nueva imagen.'
+    'Ven y camina conmigo':'Una invitación a avanzar sin prisa: cada paso, cada trazo y cada duda pueden convertirse en parte del camino hacia una nueva imagen.',
+    'Una loca pupila':'Una mirada a las locuras que cada persona puede hacer y observar: esas ideas inesperadas que convierten lo cotidiano en una escena imposible.'
   };
   const sources = Object.fromEntries(cards.map(card => [card.dataset.title, card.querySelector('img').getAttribute('src')]));
   const processByTitle = {
@@ -83,16 +84,22 @@
     ['Una locura lunar/WhatsApp Image 2026-09-04 at 9.03.44 AM (10).jpeg','11 · La obra terminada']
   ];
   processByTitle['Ven y camina conmigo'] = [
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.43 AM.jpeg','01 · El primer trazo'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.43 AM (1).jpeg','02 · La idea comienza a caminar'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM.jpeg','03 · Aparecen las primeras formas'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (1).jpeg','04 · El camino toma dirección'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (2).jpeg','05 · El color empieza a hablar'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (3).jpeg','06 · La historia sigue abierta'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (4).jpeg','07 · Todavía está naciendo'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.35 PM.jpeg','08 · La inspiración es una princesa'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.36 PM (2).jpeg','09 · Esta historia va andando de la mano'],
-    ['trabajando ando/Ven y camina conmigo/WhatsApp Image 2026-10-01 at 4.33.22 PM.jpeg','10 · La obra terminada']
+    ['Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (4).jpeg','07 · Todavía está naciendo'],
+	  ['Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.43 AM.jpeg','01 · El primer trazo'],
+    ['Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.43 AM (1).jpeg','02 · La idea comienza a caminar'],
+    ['Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM.jpeg','03 · Aparecen las primeras formas'],
+    ['Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (1).jpeg','04 · El camino toma dirección'],
+    ['Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (2).jpeg','05 · El color empieza a hablar'],
+    ['Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (3).jpeg','06 · La historia sigue abierta'],  
+	  ['Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.35 PM.jpeg','07 · La inspiración es una princesa'],
+	  ['Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.36 PM (2).jpeg','07 · Esta hitoria va andando de la mano']	
+  ];
+  processByTitle['Una loca pupila'] = [
+    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.34 PM.jpeg','01 · La mirada empieza a despertar'],
+    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.34 PM (1).jpeg','02 · La locura encuentra una forma'],
+    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM.jpeg','03 · Aparecen las primeras señales'],
+    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM (1).jpeg','04 · La pupila observa lo imposible'],
+    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM (2).jpeg','05 · La historia todavía está naciendo']
   ];
   document.querySelectorAll('img').forEach(image => {
     if (image.getAttribute('src') === 'fotos dream team/IMG_20221213_152457914.jpg') image.src = 'fotos dream team/IMG_20221213_152642224.jpg';
@@ -160,7 +167,7 @@
   if (workingEmpty) workingEmpty.hidden = workingCards.length > 0;
   filters.forEach(button => { const filter = button.dataset.filter; const count = filter === 'all' ? cards.length : cards.filter(card => card.dataset.tags.split(' ').includes(filter)).length; button.querySelector('span').textContent = String(count).padStart(2, '0'); button.addEventListener('click', () => applyFilter(filter)); });
   document.querySelectorAll('.quick-view').forEach(button => button.addEventListener('click', event => { event.stopPropagation(); openArtwork(button.dataset.title, button); }));
-  document.querySelectorAll('.image-wrap').forEach(wrap => wrap.addEventListener('click', () => openArtwork(wrap.closest('.art-card').dataset.title, wrap.querySelector('.quick-view'))));
+  document.querySelectorAll('.image-wrap').forEach(wrap => wrap.addEventListener('click', () => { const card = wrap.closest('.art-card, .work-card'); const trigger = wrap.querySelector('.quick-view'); if (card && trigger) openArtwork(card.dataset.title, trigger); }));
   modalClose?.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); closeModal(); });
   modal.addEventListener('cancel', event => { event.preventDefault(); closeModal(); });
   modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
