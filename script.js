@@ -22,6 +22,7 @@
   const galleryCount = document.getElementById('gallery-count');
   const modalClose = document.querySelector('#art-modal .modal-close');
   const cards = [...document.querySelectorAll('#coleccion .art-card')];
+  document.querySelector('#trabajando .work-card[data-title="Una loca pupila"]')?.remove();
   const workingCards = [...document.querySelectorAll('#trabajando .work-card')];
   const workingEmpty = document.getElementById('working-empty');
   const unclassifiedCard = cards.find(card => card.dataset.title === 'The Dream team');
@@ -29,6 +30,7 @@
   const filters = [...document.querySelectorAll('.filter')];
   const status = document.getElementById('filter-status');
   const empty = document.getElementById('collection-empty');
+  if (status) status.textContent = `Mostrando ${cards.length} obras`;
   const menuToggle = document.querySelector('.menu-toggle');
   const navigation = document.getElementById('site-navigation');
   const whatsappNumber = '573053079400';
@@ -49,7 +51,6 @@
     'Mi otro yo':'Ese reflejo que nos acompaña en secreto: la parte de nosotros que también merece ser escuchada.',
     'The Dream team':'Cuando los sueños se encuentran, hasta las diferencias pueden convertirse en fuerza y compañía.',
     'Ven y camina conmigo':'Una invitación a avanzar sin prisa: cada paso, cada trazo y cada duda pueden convertirse en parte del camino hacia una nueva imagen.',
-    'Una loca pupila':'Una mirada a las locuras que cada persona puede hacer y observar: esas ideas inesperadas que convierten lo cotidiano en una escena imposible.',
     'La cena de otro':'La cena de otro habla de una verdad incómoda: todos necesitamos de todos, pero a veces convertimos esa necesidad en permiso para usar, invadir y abusar de los demás.'
   };
   const cenaCard = document.querySelector('#trabajando .work-card[data-title="La cena de otro"] .art-message');
@@ -96,13 +97,6 @@
     ['Ven y camina conmigo/WhatsApp Image 2026-09-11 at 8.30.44 AM (3).jpeg','06 · La historia sigue abierta'],  
 	  ['Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.35 PM.jpeg','07 · La inspiración es una princesa'],
 	  ['Ven y camina conmigo/WhatsApp Image 2026-09-23 at 3.14.36 PM (2).jpeg','07 · Esta hitoria va andando de la mano']	
-  ];
-  processByTitle['Una loca pupila'] = [
-    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.34 PM.jpeg','01 · La mirada empieza a despertar'],
-    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.34 PM (1).jpeg','02 · La locura encuentra una forma'],
-    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM.jpeg','03 · Aparecen las primeras señales'],
-    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM (1).jpeg','04 · La pupila observa lo imposible'],
-    ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM (2).jpeg','05 · La historia todavía está naciendo']
   ];
   processByTitle['La cena de otro'] = [
     ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.52 PM.jpeg','01 · La mesa empieza a aparecer'],
