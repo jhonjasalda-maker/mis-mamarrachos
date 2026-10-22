@@ -49,7 +49,8 @@
     'Mi otro yo':'Ese reflejo que nos acompaña en secreto: la parte de nosotros que también merece ser escuchada.',
     'The Dream team':'Cuando los sueños se encuentran, hasta las diferencias pueden convertirse en fuerza y compañía.',
     'Ven y camina conmigo':'Una invitación a avanzar sin prisa: cada paso, cada trazo y cada duda pueden convertirse en parte del camino hacia una nueva imagen.',
-    'Una loca pupila':'Una mirada a las locuras que cada persona puede hacer y observar: esas ideas inesperadas que convierten lo cotidiano en una escena imposible.'
+    'Una loca pupila':'Una mirada a las locuras que cada persona puede hacer y observar: esas ideas inesperadas que convierten lo cotidiano en una escena imposible.',
+    'La cena de otro':'Una escena para imaginar lo que ocurre en la mesa de alguien más: cada plato guarda una historia y cada silencio, una forma distinta de mirar.'
   };
   const sources = Object.fromEntries(cards.map(card => [card.dataset.title, card.querySelector('img').getAttribute('src')]));
   const processByTitle = {
@@ -100,6 +101,16 @@
     ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM.jpeg','03 · Aparecen las primeras señales'],
     ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM (1).jpeg','04 · La pupila observa lo imposible'],
     ['trabajando ando/Una loca pupila/WhatsApp Image 2026-10-07 at 8.44.35 PM (2).jpeg','05 · La historia todavía está naciendo']
+  ];
+  processByTitle['La cena de otro'] = [
+    ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.52 PM.jpeg','01 · La mesa empieza a aparecer'],
+    ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.52 PM (1).jpeg','02 · La historia se sirve despacio'],
+    ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.53 PM.jpeg','03 · Aparecen las primeras formas'],
+    ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.53 PM (1).jpeg','04 · Cada mirada ocupa su lugar'],
+    ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.53 PM (2).jpeg','05 · El silencio también participa'],
+    ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.53 PM (3).jpeg','06 · La escena toma cuerpo'],
+    ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.53 PM (4).jpeg','07 · La historia queda servida'],
+    ['trabajando ando/La cena de otro/WhatsApp Image 2026-10-21 at 8.55.54 PM.jpeg','08 · La obra todavía está naciendo']
   ];
   document.querySelectorAll('img').forEach(image => {
     if (image.getAttribute('src') === 'fotos dream team/IMG_20221213_152457914.jpg') image.src = 'fotos dream team/IMG_20221213_152642224.jpg';
