@@ -50,8 +50,10 @@
     'The Dream team':'Cuando los sueños se encuentran, hasta las diferencias pueden convertirse en fuerza y compañía.',
     'Ven y camina conmigo':'Una invitación a avanzar sin prisa: cada paso, cada trazo y cada duda pueden convertirse en parte del camino hacia una nueva imagen.',
     'Una loca pupila':'Una mirada a las locuras que cada persona puede hacer y observar: esas ideas inesperadas que convierten lo cotidiano en una escena imposible.',
-    'La cena de otro':'Una escena para imaginar lo que ocurre en la mesa de alguien más: cada plato guarda una historia y cada silencio, una forma distinta de mirar.'
+    'La cena de otro':'La cena de otro habla de una verdad incómoda: todos necesitamos de todos, pero a veces convertimos esa necesidad en permiso para usar, invadir y abusar de los demás.'
   };
+  const cenaCard = document.querySelector('#trabajando .work-card[data-title="La cena de otro"] .art-message');
+  if (cenaCard) cenaCard.textContent = messages['La cena de otro'];
   const sources = Object.fromEntries(cards.map(card => [card.dataset.title, card.querySelector('img').getAttribute('src')]));
   const processByTitle = {
     'The Dream team': [['fotos dream team/IMG_20221124_114458550.jpg','01 · El primer trazo'],['fotos dream team/IMG_20221205_151949044.jpg','02 · La idea toma forma'],['fotos dream team/IMG_20221213_152457914.jpg','03 · Aparecen los personajes'],['fotos dream team/IMG_20230127_152457914.jpg','04 · El mundo se revela'],['fotos dream team/IMG_20230203_093418988.jpg','05 · El color despierta'],['fotos dream team/IMG_20230208_190432866.jpg','06 · Todo encuentra su lugar'],['fotos dream team/IMG_20230224_120723480.jpg','07 · La obra terminada']],
